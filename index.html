@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Калькулятор ІМТ, БЖУ і Меню + ГІ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #333;
+    padding: 40px 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    color: #fff;
+    margin-bottom: 40px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-direction: row;
+  }
+
+  button.toggle-btn {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    border-radius: 50px;
+    border: 2px solid #fff;
+    background: transparent;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 0 0 rgba(255,255,255,0);
+    transition: all 0.3s ease;
+  }
+
+  button.toggle-btn:hover {
+    background: #fff;
+    color: #764ba2;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.6);
+  }
+
+  button.toggle-btn.active {
+    background: #fff;
+    color: #764ba2;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.8);
+  }
+
+  section {
+    display: none;
+    background: #fff;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+    width: 100%;
+    max-width: 480px;
+    animation: fadeIn 0.5s ease forwards;
+  }
+
+  section.active {
+    display: block;
+  }
+
+  label {
+    font-weight: 600;
+    margin-top: 15px;
+    display: block;
+    color: #555;
+  }
+
+  input, select {
+    width: 90%;
+    padding: 14px 16px;
+    margin-top: 6px;
+    border-radius: 12px;
+    border: 2px solid #ddd;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+  }
+
+  input:focus, select:focus {
+    outline: none;
+    border-color: #764ba2;
+    box-shadow: 0 0 8px #a17be0;
+  }
+
+  button.submit-btn {
+    margin-top: 28px;
+    background: #764ba2;
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding: 14px;
+    width: 100%;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(118,75,162,0.5);
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  button.submit-btn:hover {
+    background: #5a368e;
+    box-shadow: 0 12px 30px rgba(90,54,142,0.7);
+  }
+
+  .result {
+    margin-top: 25px;
+    background: #f7f4ff;
+    border-left: 6px solid #764ba2;
+    padding: 20px 25px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: #4a3a7e;
+    box-shadow: 0 4px 20px rgba(118,75,162,0.2);
+  }
+
+  a {
+    color: #764ba2;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #5a368e;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(15px);}
+    to {opacity: 1; transform: translateY(0);}
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    body {
+      padding: 20px 10px;
+    }
+    section {
+      padding: 25px 20px;
+    }
+    .btn-group {
+      flex-direction: column;
+      gap: 10px;
+    }
+    button.toggle-btn {
+      font-size: 1rem;
+      padding: 12px 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h1>Калькулятор ІМТ, БЖУ і Меню + ГІ</h1>
+
+<div class="btn-group">
+  <button class="toggle-btn active" data-target="bmi-section">Калькулятор ІМТ (індекса маси тіла)</button>
+  <button class="toggle-btn" data-target="bju-section">Калькулятор БЖУ (більки, живи, вуглеводи)</button>
+  <button class="toggle-btn" data-target="menu-section">Меню + ГІ (Глікемічний індекс)</button>
+  <button class="toggle-btn" data-target="info-section">Інформація</button>
+</div>
+
+<!-- Калькулятор ІМТ -->
+<section id="bmi-section" class="active">
+  <h2>Калькулятор Індексу Маси Тіла (ІМТ)</h2>
+  <form id="bmi-form">
+    <label for="weight-bmi">Вага (кг):</label>
+    <input type="number" id="weight-bmi" required min="1" step="0.1" placeholder="Введіть вашу вагу" />
+
+    <label for="height-bmi">Зріст (см):</label>
+    <input type="number" id="height-bmi" required min="1" step="0.1" placeholder="Введіть ваш зріст" />
+
+    <button type="submit" class="submit-btn">Розрахувати ІМТ</button>
+  </form>
+  <div class="result" id="bmi-result" style="display:none;"></div>
+</section>
+
+<!-- Калькулятор БЖУ -->
+<section id="bju-section">
+  <h2>Калькулятор БЖУ</h2>
+  <form id="bju-form">
+    <label for="age">Вік (років):</label>
+    <input type="number" id="age" required min="1" placeholder="Ваш вік" />
+
+    <label for="weight">Вага (кг):</label>
+    <input type="number" id="weight" required min="1" step="0.1" placeholder="Ваша вага" />
+
+    <label for="height">Зріст (см):</label>
+    <input type="number" id="height" required min="1" step="0.1" placeholder="Ваш зріст" />
+
+    <label for="gender">Стать:</label>
+    <select id="gender" required>
+      <option value="">Оберіть стать</option>
+      <option value="male">Чоловіча</option>
+      <option value="female">Жіноча</option>
+    </select>
+
+    <label for="activity">Активність:</label>
+    <select id="activity" required>
+      <option value="">Оберіть рівень активності</option>
+      <option value="1.2">Малорухливий</option>
+      <option value="1.375">Легка активність</option>
+      <option value="1.55">Середня активність</option>
+      <option value="1.725">Висока активність</option>
+    </select>
+
+    <button type="submit" class="submit-btn">Розрахувати БЖУ</button>
+  </form>
+  <div class="result" id="bju-result" style="display:none;"></div>
+</section>
+
+<!-- Меню + ГІ -->
+<section id="menu-section">
+  <h2>Меню + Глікемічний індекс</h2>
+  <a href="/meny.html" target="_blank" style="font-size:1.1rem;">Перейти до меню</a>
+</section>
+<!-- Інформація -->
+<section id="info-section">
+  <h2>Інформація</h2>
+  <article style="margin-bottom: 20px;">
+    <h3>Що таке ІМТ?</h3>
+    <p><strong>Індекс маси тіла (ІМТ)</strong> — це показник, який використовується для оцінки відповідності маси людини її зросту. Розраховується за формулою:</p>
+    <p style="font-style: italic;">ІМТ = вага (кг) / (зріст (м))²</p>
+    <p>За значенням ІМТ можна визначити, чи є вага недостатньою, нормальною, надмірною або ожирінням.</p>
+  </article>
+
+  <article style="margin-bottom: 20px;">
+    <h3>Що таке БЖУ?</h3>
+    <p><strong>БЖУ</strong> — це білки, жири і вуглеводи, основні макронутрієнти, необхідні для життєдіяльності та енергії. Розрахунок добової потреби в БЖУ допомагає збалансувати харчування.</p>
+    <p>Формула для розрахунку калорій: <em>калорії = базовий метаболізм × коефіцієнт активності</em>.</p>
+    <p>Загалом рекомендується близько 2 г білка, 1 г жиру на 1 кг ваги, решта калорій — на вуглеводи.</p>
+  </article>
+
+  <article>
+    <h3>Що таке Глікемічний індекс (ГІ)?</h3>
+    <p><strong>Глікемічний індекс (ГІ)</strong> показує, як швидко вуглеводи в продуктах підвищують рівень цукру в крові.</p>
+    <p>Продукти з низьким ГІ сприяють повільному та стабільному підвищенню цукру, що корисно для контролю ваги і енергії.</p>
+    <p>Використовуйте меню з урахуванням ГІ для підтримки здорового харчування.</p>
+  </article>
+</section>
+
+<script>
+  /// Перемикання секцій
+  const buttons = document.querySelectorAll('.toggle-btn');
+  const sections = document.querySelectorAll('section');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const target = btn.getAttribute('data-target');
+      sections.forEach(sec => {
+        if (sec.id === target) sec.classList.add('active');
+        else sec.classList.remove('active');
+      });
+    });
+  });
+
+  // Калькулятор ІМТ
+  document.getElementById('bmi-form').addEventListener('submit', e => {
+    e.preventDefault();
+    const weight = parseFloat(document.getElementById('weight-bmi').value);
+    const height = parseFloat(document.getElementById('height-bmi').value);
+
+    if (!weight || !height) return;
+
+    const heightM = height / 100;
+    const bmi = weight / (heightM * heightM);
+    const bmiRounded = bmi.toFixed(1);
+
+    let advice = '';
+    if (bmi < 18.5) {
+      advice = 'Недостатня вага. Рекомендується збільшити калорійність харчування.';
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+      advice = 'Норма. Підтримуйте збалансоване харчування.';
+    } else if (bmi >= 25 && bmi < 29.9) {
+      advice = 'Надмірна вага. Варто зменшити калорійність і збільшити активність.';
+    } else {
+      advice = 'Ожиріння. Рекомендується консультація з лікарем-дієтологом.';
+    }
+
+    const result = document.getElementById('bmi-result');
+    result.style.display = 'block';
+    result.innerHTML = `<strong>Ваш ІМТ:</strong> ${bmiRounded} <br><em>${advice}</em>`;
+  });
+
+
+  // --- Калькулятор БЖУ ---
+   document.getElementById('bju-form').addEventListener('submit', e => {
+    e.preventDefault();
+
+    const age = parseInt(document.getElementById('age').value);
+    const weight = parseFloat(document.getElementById('weight').value);
+    const height = parseFloat(document.getElementById('height').value);
+    const gender = document.getElementById('gender').value;
+    const activity = parseFloat(document.getElementById('activity').value);
+
+    if (!age || !weight || !height || !gender || !activity ) return;
+
+    // BMR за формулою Міффліна-Сан Жеора
+    let bmr = gender === 'male'
+      ? 10 * weight + 6.25 * height - 5 * age + 5
+      : 10 * weight + 6.25 * height - 5 * age - 161;
+
+    let calories = bmr * activity;
+
+    calories = Math.round(calories);
+
+    const protein = Math.round(weight * 2); // 2г білка на кг
+    const fat = Math.round(weight * 1); // 1г жиру на кг
+    const proteinKcal = protein * 4;
+    const fatKcal = fat * 9;
+    const carbKcal = calories - (proteinKcal + fatKcal);
+    const carbs = Math.max(0, Math.round(carbKcal / 4));
+
+    const result = document.getElementById('bju-result');
+    result.style.display = 'block';
+    result.innerHTML = `
+      <strong>Калорії:</strong> ${calories} ккал/день<br>
+      <strong>Білки:</strong> ${protein} г<br>
+      <strong>Жири:</strong> ${fat} г<br>
+      <strong>Вуглеводи:</strong> ${carbs} 
+       <p style="color:#555; font-size:1.1rem;">* данні приблизні, для точних розрахунків передіть до меню:</p>
+      <a href="/meny.html" target="_blank" style="font-size:1.1rem;">Перейти до меню</a>
+    `;
+  });
+</script>
+
+</body>
+</html>
