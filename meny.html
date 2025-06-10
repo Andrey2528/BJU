@@ -168,663 +168,9 @@
     <div id="weekly-menu"></div>
 
     <script>
-        const menus = {
-            low: {
-                maintain: {
-                    day1: {
-                        breakfast: [
-                            { name: 'Вівсянка', gi: 55, protein: 6, carbs: 30, fat: 3 },
-                            { name: 'Яблуко', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Гречка', gi: 54, protein: 10, carbs: 40, fat: 1 },
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 }
-                        ],
-                        dinner: [
-                            { name: 'Горох', gi: 35, protein: 8, carbs: 20, fat: 1 },
-                            { name: 'Овочі на пару', gi: 15, protein: 2, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day2: {
-                        breakfast: [
-                            { name: 'Ячмінна каша', gi: 25, protein: 5, carbs: 25, fat: 2 },
-                            { name: 'Груша', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка запечена', gi: 0, protein: 28, carbs: 0, fat: 2 },
-                            { name: 'Цвітна капуста на пару', gi: 15, protein: 3, carbs: 7, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Салат зі шпинату', gi: 15, protein: 2, carbs: 5, fat: 1 },
-                            { name: 'Тунець консервований', gi: 0, protein: 25, carbs: 0, fat: 2 }
-                        ]
-                    },
-                    day3: {
-                        breakfast: [
-                            { name: 'Кефір 1%', gi: 30, protein: 6, carbs: 5, fat: 1 },
-                            { name: 'Житній хліб', gi: 45, protein: 5, carbs: 20, fat: 1 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка тушкована', gi: 0, protein: 30, carbs: 0, fat: 2 },
-                            { name: 'Броколі на пару', gi: 10, protein: 4, carbs: 8, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Салат овочевий', gi: 15, protein: 2, carbs: 10, fat: 1 },
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 }
-                        ]
-                    },
-                    day4: {
-                        breakfast: [
-                            { name: 'Вівсянка', gi: 55, protein: 6, carbs: 30, fat: 3 },
-                            { name: 'Чорниця', gi: 40, protein: 1, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Гречка', gi: 54, protein: 10, carbs: 40, fat: 1 },
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 }
-                        ],
-                        dinner: [
-                            { name: 'Горох', gi: 35, protein: 8, carbs: 20, fat: 1 },
-                            { name: 'Овочі на пару', gi: 15, protein: 2, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day5: {
-                        breakfast: [
-                            { name: 'Ячмінна каша', gi: 25, protein: 5, carbs: 25, fat: 2 },
-                            { name: 'Груша', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка запечена', gi: 0, protein: 28, carbs: 0, fat: 2 },
-                            { name: 'Цвітна капуста на пару', gi: 15, protein: 3, carbs: 7, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Салат зі шпинату', gi: 15, protein: 2, carbs: 5, fat: 1 },
-                            { name: 'Тунець консервований', gi: 0, protein: 25, carbs: 0, fat: 2 }
-                        ]
-                    },
-                    day6: {
-                        breakfast: [
-                            { name: 'Кефір 1%', gi: 30, protein: 6, carbs: 5, fat: 1 },
-                            { name: 'Житній хліб', gi: 45, protein: 5, carbs: 20, fat: 1 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка тушкована', gi: 0, protein: 30, carbs: 0, fat: 2 },
-                            { name: 'Броколі на пару', gi: 10, protein: 4, carbs: 8, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Салат овочевий', gi: 15, protein: 2, carbs: 10, fat: 1 },
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 }
-                        ]
-                    },
-                    day7: {
-                        breakfast: [
-                            { name: 'Вівсянка', gi: 55, protein: 6, carbs: 30, fat: 3 },
-                            { name: 'Чорниця', gi: 40, protein: 1, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Гречка', gi: 54, protein: 10, carbs: 40, fat: 1 },
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 }
-                        ],
-                        dinner: [
-                            { name: 'Горох', gi: 35, protein: 8, carbs: 20, fat: 1 },
-                            { name: 'Овочі на пару', gi: 15, protein: 2, carbs: 10, fat: 0 }
-                        ]
-                    }
-                },
-                lose: {
-                    day1: {
-                        breakfast: [
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 },
-                            { name: 'Помідор', gi: 15, protein: 1, carbs: 5, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Салат зелений', gi: 10, protein: 1, carbs: 3, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day2: {
-                        breakfast: [
-                            { name: 'Кефір 1%', gi: 30, protein: 6, carbs: 5, fat: 1 },
-                            { name: 'Яблуко', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка тушкована', gi: 0, protein: 28, carbs: 0, fat: 2 },
-                            { name: 'Броколі на пару', gi: 10, protein: 4, carbs: 8, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Салат овочевий', gi: 15, protein: 2, carbs: 10, fat: 1 },
-                            { name: 'Риба на грилі', gi: 0, protein: 30, carbs: 0, fat: 5 }
-                        ]
-                    },
-                    day3: {
-                        breakfast: [
-                            { name: 'Омлет з білків (3 шт)', gi: 0, protein: 12, carbs: 1, fat: 0 },
-                            { name: 'Огірок', gi: 15, protein: 1, carbs: 3, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Цвітна капуста на пару', gi: 15, protein: 3, carbs: 7, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Тунець консервований', gi: 0, protein: 25, carbs: 0, fat: 2 },
-                            { name: 'Салат зі шпинату', gi: 15, protein: 2, carbs: 5, fat: 1 }
-                        ]
-                    },
-                    day4: {
-                        breakfast: [
-                            { name: 'Кефір 1%', gi: 30, protein: 6, carbs: 5, fat: 1 },
-                            { name: 'Житній хліб (1 скибка)', gi: 45, protein: 5, carbs: 20, fat: 1 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка запечена', gi: 0, protein: 28, carbs: 0, fat: 2 },
-                            { name: 'Броколі на пару', gi: 10, protein: 4, carbs: 8, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 },
-                            { name: 'Овочі на пару', gi: 15, protein: 2, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day5: {
-                        breakfast: [
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 },
-                            { name: 'Помідор', gi: 15, protein: 1, carbs: 5, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Салат зелений', gi: 10, protein: 1, carbs: 3, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Риба на грилі', gi: 0, protein: 25, carbs: 0, fat: 5 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day6: {
-                        breakfast: [
-                            { name: 'Омлет з білків (3 шт)', gi: 0, protein: 12, carbs: 1, fat: 0 },
-                            { name: 'Огірок', gi: 15, protein: 1, carbs: 3, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка тушкована', gi: 0, protein: 28, carbs: 0, fat: 2 },
-                            { name: 'Цвітна капуста на пару', gi: 15, protein: 3, carbs: 7, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Тунець консервований', gi: 0, protein: 25, carbs: 0, fat: 2 },
-                            { name: 'Салат зі шпинату', gi: 15, protein: 2, carbs: 5, fat: 1 }
-                        ]
-                    },
-                    day7: {
-                        breakfast: [
-                            { name: 'Кефір 1%', gi: 30, protein: 6, carbs: 5, fat: 1 },
-                            { name: 'Житній хліб (1 скибка)', gi: 45, protein: 5, carbs: 20, fat: 1 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Салат зелений', gi: 10, protein: 1, carbs: 3, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 },
-                            { name: 'Овочі на пару', gi: 15, protein: 2, carbs: 10, fat: 0 }
-                        ]
-                    }
-                },
-                gain: {
-                    day1: {
-                        breakfast: [
-                            { name: 'Вівсянка з горіхами', gi: 55, protein: 10, carbs: 40, fat: 10 },
-                            { name: 'Банан', gi: 51, protein: 1, carbs: 25, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Свинина запечена', gi: 0, protein: 35, carbs: 0, fat: 20 },
-                            { name: 'Коричневий рис', gi: 50, protein: 5, carbs: 45, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з соусом', gi: 50, protein: 10, carbs: 60, fat: 8 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    },
-                    day2: {
-                        breakfast: [
-                            { name: 'Омлет з сиром', gi: 0, protein: 15, carbs: 2, fat: 12 },
-                            { name: 'Груша', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина тушкована', gi: 0, protein: 40, carbs: 0, fat: 25 },
-                            { name: 'Квасоля', gi: 30, protein: 10, carbs: 35, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Рис з овочами', gi: 50, protein: 7, carbs: 45, fat: 3 },
-                            { name: 'Риба смажена', gi: 0, protein: 25, carbs: 0, fat: 8 }
-                        ]
-                    },
-                    day3: {
-                        breakfast: [
-                            { name: 'Гречка з вершковим маслом', gi: 54, protein: 10, carbs: 40, fat: 10 },
-                            { name: 'Яблуко', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з куркою', gi: 50, protein: 20, carbs: 60, fat: 5 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    },
-                    day4: {
-                        breakfast: [
-                            { name: 'Омлет з овочами', gi: 0, protein: 15, carbs: 5, fat: 10 },
-                            { name: 'Груша', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Свинина тушкована', gi: 0, protein: 35, carbs: 0, fat: 20 },
-                            { name: 'Рис коричневий', gi: 50, protein: 5, carbs: 45, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі на пару', gi: 15, protein: 2, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day5: {
-                        breakfast: [
-                            { name: 'Вівсянка з горіхами', gi: 55, protein: 10, carbs: 40, fat: 10 },
-                            { name: 'Банан', gi: 51, protein: 1, carbs: 25, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка запечена', gi: 0, protein: 28, carbs: 0, fat: 2 },
-                            { name: 'Квасоля', gi: 30, protein: 10, carbs: 35, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з соусом', gi: 50, protein: 10, carbs: 60, fat: 8 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    },
-                    day6: {
-                        breakfast: [
-                            { name: 'Омлет з сиром', gi: 0, protein: 15, carbs: 2, fat: 12 },
-                            { name: 'Яблуко', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина тушкована', gi: 0, protein: 40, carbs: 0, fat: 25 },
-                            { name: 'Броколі на пару', gi: 10, protein: 4, carbs: 8, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Рис з овочами', gi: 50, protein: 7, carbs: 45, fat: 3 },
-                            { name: 'Риба смажена', gi: 0, protein: 25, carbs: 0, fat: 8 }
-                        ]
-                    },
-                    day7: {
-                        breakfast: [
-                            { name: 'Гречка з вершковим маслом', gi: 54, protein: 10, carbs: 40, fat: 10 },
-                            { name: 'Груша', gi: 38, protein: 0, carbs: 15, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з куркою', gi: 50, protein: 20, carbs: 60, fat: 5 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    }
-                }
-            },
-            high: {
-                lose: {
-                    day1: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 40, fat: 1 },
-                            { name: 'Молоко 1.5%', gi: 30, protein: 6, carbs: 8, fat: 3 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка варена', gi: 0, protein: 35, carbs: 0, fat: 3 },
-                            { name: 'Картопля пюре (маленька порція)', gi: 80, protein: 2, carbs: 30, fat: 3 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day2: {
-                        breakfast: [
-                            { name: 'Білий хліб', gi: 70, protein: 6, carbs: 35, fat: 1 },
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Білий рис (маленька порція)', gi: 72, protein: 4, carbs: 30, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Свинина тушкована (помірно)', gi: 0, protein: 30, carbs: 0, fat: 15 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day3: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 40, fat: 1 },
-                            { name: 'Молоко 1.5%', gi: 30, protein: 6, carbs: 8, fat: 3 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина тушкована', gi: 0, protein: 40, carbs: 0, fat: 20 },
-                            { name: 'Макарони з білого борошна (маленька порція)', gi: 65, protein: 6, carbs: 35, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Риба смажена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day4: {
-                        breakfast: [
-                            { name: 'Білий хліб з медом (маленька порція)', gi: 70, protein: 4, carbs: 30, fat: 1 },
-                            { name: 'Варені яйця', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Білий рис (маленька порція)', gi: 72, protein: 4, carbs: 30, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Свинина тушкована', gi: 0, protein: 30, carbs: 0, fat: 15 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day5: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 40, fat: 1 },
-                            { name: 'Молоко 1.5%', gi: 30, protein: 6, carbs: 8, fat: 3 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка варена', gi: 0, protein: 35, carbs: 0, fat: 3 },
-                            { name: 'Картопля пюре (маленька порція)', gi: 80, protein: 2, carbs: 30, fat: 3 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 5 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day6: {
-                        breakfast: [
-                            { name: 'Білий хліб', gi: 70, protein: 6, carbs: 35, fat: 1 },
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Макарони з білого борошна (маленька порція)', gi: 65, protein: 6, carbs: 35, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Свинина тушкована', gi: 0, protein: 30, carbs: 0, fat: 15 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day7: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 40, fat: 1 },
-                            { name: 'Молоко 1.5%', gi: 30, protein: 6, carbs: 8, fat: 3 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина тушкована', gi: 0, protein: 40, carbs: 0, fat: 20 },
-                            { name: 'Картопля пюре (маленька порція)', gi: 80, protein: 2, carbs: 30, fat: 3 }
-                        ],
-                        dinner: [
-                            { name: 'Риба смажена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    }
-                },
-                maintain: {
-                    day1: {
-                        breakfast: [
-                            { name: 'Білий хліб', gi: 70, protein: 6, carbs: 45, fat: 2 },
-                            { name: 'Варені яйця', gi: 0, protein: 12, carbs: 1, fat: 10 },
-                            { name: 'Апельсиновий сік', gi: 65, protein: 1, carbs: 20, fat: 0 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Білий рис', gi: 72, protein: 5, carbs: 45, fat: 1 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Паста з томатним соусом', gi: 65, protein: 10, carbs: 50, fat: 5 }
-                        ]
-                    },
-                    day2: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 50, fat: 1 },
-                            { name: 'Молоко 2%', gi: 30, protein: 7, carbs: 10, fat: 5 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка смажена', gi: 0, protein: 35, carbs: 0, fat: 5 },
-                            { name: 'Картопля пюре', gi: 80, protein: 3, carbs: 40, fat: 5 }
-                        ],
-                        dinner: [
-                            { name: 'Свинина тушкована', gi: 0, protein: 30, carbs: 0, fat: 20 },
-                            { name: 'Овочі на пару', gi: 15, protein: 3, carbs: 10, fat: 0 }
-                        ]
-                    },
-                    day3: {
-                        breakfast: [
-                            { name: 'Білий хліб з медом', gi: 70, protein: 6, carbs: 50, fat: 2 },
-                            { name: 'Варені яйця', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина смажена', gi: 0, protein: 40, carbs: 0, fat: 25 },
-                            { name: 'Макарони з білого борошна', gi: 65, protein: 8, carbs: 55, fat: 2 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day4: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 50, fat: 1 },
-                            { name: 'Молоко 2%', gi: 30, protein: 7, carbs: 10, fat: 5 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Білий рис', gi: 72, protein: 5, carbs: 45, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Свинина тушкована', gi: 0, protein: 35, carbs: 0, fat: 20 },
-                            { name: 'Картопля пюре', gi: 80, protein: 3, carbs: 40, fat: 5 }
-                        ]
-                    },
-                    day5: {
-                        breakfast: [
-                            { name: 'Білий хліб з джемом', gi: 70, protein: 6, carbs: 50, fat: 2 },
-                            { name: 'Варені яйця', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Індичка смажена', gi: 0, protein: 35, carbs: 0, fat: 5 },
-                            { name: 'Макарони з білого борошна', gi: 65, protein: 8, carbs: 55, fat: 2 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day6: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 50, fat: 1 },
-                            { name: 'Молоко 2%', gi: 30, protein: 7, carbs: 10, fat: 5 }
-                        ],
-                        lunch: [
-                            { name: 'Свинина тушкована', gi: 0, protein: 35, carbs: 0, fat: 20 },
-                            { name: 'Картопля пюре', gi: 80, protein: 3, carbs: 40, fat: 5 }
-                        ],
-                        dinner: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Білий рис', gi: 72, protein: 5, carbs: 45, fat: 1 }
-                        ]
-                    },
-                    day7: {
-                        breakfast: [
-                            { name: 'Білий хліб', gi: 70, protein: 6, carbs: 50, fat: 2 },
-                            { name: 'Мед', gi: 75, protein: 0, carbs: 20, fat: 0 },
-                            { name: 'Варені яйця', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина смажена', gi: 0, protein: 40, carbs: 0, fat: 25 },
-                            { name: 'Макарони з білого борошна', gi: 65, protein: 8, carbs: 55, fat: 2 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    }
-                },
-                gain: {
-                    day1: {
-                        breakfast: [
-                            { name: 'Білий хліб', gi: 70, protein: 6, carbs: 50, fat: 2 },
-                            { name: 'Мед', gi: 75, protein: 0, carbs: 20, fat: 0 },
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Свинина смажена', gi: 0, protein: 35, carbs: 0, fat: 25 },
-                            { name: 'Картопля пюре', gi: 80, protein: 3, carbs: 40, fat: 5 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з соусом томатним', gi: 65, protein: 10, carbs: 60, fat: 8 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    },
-                    day2: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 60, fat: 1 },
-                            { name: 'Молоко 2%', gi: 30, protein: 7, carbs: 10, fat: 5 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина тушкована', gi: 0, protein: 40, carbs: 0, fat: 25 },
-                            { name: 'Білий рис', gi: 72, protein: 5, carbs: 50, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Риба смажена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Картопля смажена', gi: 75, protein: 3, carbs: 35, fat: 10 }
-                        ]
-                    },
-                    day3: {
-                        breakfast: [
-                            { name: 'Білий хліб з джемом', gi: 70, protein: 6, carbs: 50, fat: 3 },
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Макарони з білого борошна', gi: 65, protein: 8, carbs: 60, fat: 2 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day4: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 60, fat: 1 },
-                            { name: 'Молоко 2%', gi: 30, protein: 7, carbs: 10, fat: 5 }
-                        ],
-                        lunch: [
-                            { name: 'Свинина смажена', gi: 0, protein: 35, carbs: 0, fat: 25 },
-                            { name: 'Картопля пюре', gi: 80, protein: 3, carbs: 40, fat: 5 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з соусом томатним', gi: 65, protein: 10, carbs: 60, fat: 8 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    },
-                    day5: {
-                        breakfast: [
-                            { name: 'Білий хліб', gi: 70, protein: 6, carbs: 50, fat: 2 },
-                            { name: 'Мед', gi: 75, protein: 0, carbs: 20, fat: 0 },
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Яловичина тушкована', gi: 0, protein: 40, carbs: 0, fat: 25 },
-                            { name: 'Білий рис', gi: 72, protein: 5, carbs: 50, fat: 1 }
-                        ],
-                        dinner: [
-                            { name: 'Риба смажена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Картопля смажена', gi: 75, protein: 3, carbs: 35, fat: 10 }
-                        ]
-                    },
-                    day6: {
-                        breakfast: [
-                            { name: 'Кукурудзяні пластівці', gi: 75, protein: 5, carbs: 60, fat: 1 },
-                            { name: 'Молоко 2%', gi: 30, protein: 7, carbs: 10, fat: 5 }
-                        ],
-                        lunch: [
-                            { name: 'Куряча грудка', gi: 0, protein: 30, carbs: 0, fat: 3 },
-                            { name: 'Макарони з білого борошна', gi: 65, protein: 8, carbs: 60, fat: 2 }
-                        ],
-                        dinner: [
-                            { name: 'Риба запечена', gi: 0, protein: 25, carbs: 0, fat: 8 },
-                            { name: 'Овочі гриль', gi: 25, protein: 3, carbs: 10, fat: 1 }
-                        ]
-                    },
-                    day7: {
-                        breakfast: [
-                            { name: 'Білий хліб з джемом', gi: 70, protein: 6, carbs: 50, fat: 3 },
-                            { name: 'Яйця варені', gi: 0, protein: 12, carbs: 1, fat: 10 }
-                        ],
-                        lunch: [
-                            { name: 'Свинина смажена', gi: 0, protein: 35, carbs: 0, fat: 25 },
-                            { name: 'Картопля пюре', gi: 80, protein: 3, carbs: 40, fat: 5 }
-                        ],
-                        dinner: [
-                            { name: 'Паста з соусом томатним', gi: 65, protein: 10, carbs: 60, fat: 8 },
-                            { name: 'Сир', gi: 0, protein: 15, carbs: 2, fat: 10 }
-                        ]
-                    }
-                }
-            }
-        };
 
-        const dayNames = {
-            day1: 'День 1',
-            day2: 'День 2',
-            day3: 'День 3',
-            day4: 'День 4',
-            day5: 'День 5',
-            day6: 'День 6',
-            day7: 'День 7'
-        };
-
-        const mealNames = {
-            breakfast: 'Сніданок',
-            lunch: 'Обід',
-            dinner: 'Вечеря'
-        };
-
-        document.getElementById('generate-menu').addEventListener('click', () => {
-            const weight = parseFloat(document.getElementById('weight').value);
-            const height = parseFloat(document.getElementById('height').value);
-            const gi = document.getElementById('gi-select').value;
-
-            if (!weight || !height) {
-                alert('Будь ласка, введіть вагу і зріст');
-                return;
-            }
-
-            const bmi = calculateBMI(weight, height);
-            const goal = chooseGoalByBMI(bmi);
-            const advice = getAdviceByBMI(bmi);
-
-            // Виводимо ІМТ і пораду
-            const adviceDiv = document.getElementById('bmi-advice');
-            adviceDiv.innerHTML = `
-    <h3>Ваш ІМТ: ${bmi.toFixed(1)}</h3>
-    <ul>
-      <li>${advice}</li>
-      <li>Відповідна мета харчування: <strong>${goal === 'gain' ? 'Набір маси' : goal === 'lose' ? 'Схуднення' : 'Утримання маси'}</strong></li>
-    </ul>
-  `;
-
-            // Підбираємо меню на основі мети і глікемічного індексу
-            const menu = menus[gi][goal];
-
-            renderMenu(menu);
-        });
+        // Виводимо БЖУ користувача, якщо є
+        const bjuData = JSON.parse(localStorage.getItem('bjuData') || '{}');
 
         function calculateBMI(weight, height) {
             const heightM = height / 100;
@@ -849,42 +195,184 @@
             }
         }
 
-        function renderMenu(menu) {
-            const container = document.getElementById('weekly-menu');
-            container.innerHTML = '';
 
-            for (const [day, meals] of Object.entries(menu)) {
-                let dayLabel = dayNames[day] || day;
-                let dayHtml = `<h3>${dayLabel}</h3>`;
+        // Список продуктів з вашого меню
+        const products = [
+            { name: 'Вівсянка', protein: 6, fat: 3, carbs: 30 },
+            { name: 'Яблуко', protein: 0, fat: 0, carbs: 15 },
+            { name: 'Гречка', protein: 10, fat: 1, carbs: 40 },
+            { name: 'Куряча грудка', protein: 30, fat: 3, carbs: 0 },
+            { name: 'Горох', protein: 8, fat: 1, carbs: 20 },
+            { name: 'Овочі на пару', protein: 2, fat: 0, carbs: 10 },
+            { name: 'Ячмінна каша', protein: 5, fat: 2, carbs: 25 },
+            { name: 'Груша', protein: 0, fat: 0, carbs: 15 },
+            { name: 'Індичка запечена', protein: 28, fat: 2, carbs: 0 },
+            { name: 'Цвітна капуста на пару', protein: 3, fat: 0, carbs: 7 },
+            { name: 'Салат зі шпинату', protein: 2, fat: 1, carbs: 5 },
+            { name: 'Тунець консервований', protein: 25, fat: 2, carbs: 0 },
+            { name: 'Кефір 1%', protein: 6, fat: 1, carbs: 5 },
+            { name: 'Житній хліб', protein: 5, fat: 1, carbs: 20 },
+            { name: 'Індичка тушкована', protein: 30, fat: 2, carbs: 0 },
+            { name: 'Броколі на пару', protein: 4, fat: 0, carbs: 8 },
+            { name: 'Салат овочевий', protein: 2, fat: 1, carbs: 10 },
+            { name: 'Риба запечена', protein: 25, fat: 5, carbs: 0 },
+            { name: 'Чорниця', protein: 1, fat: 0, carbs: 15 },
+            { name: 'Яйця варені', protein: 12, fat: 10, carbs: 1 },
+            { name: 'Помідор', protein: 1, fat: 0, carbs: 5 },
+            { name: 'Салат зелений', protein: 1, fat: 0, carbs: 3 },
+            { name: 'Риба на грилі', protein: 30, fat: 5, carbs: 0 },
+            { name: 'Омлет з білків (3 шт)', protein: 12, fat: 0, carbs: 1 },
+            { name: 'Огірок', protein: 1, fat: 0, carbs: 3 },
+            { name: 'Житній хліб (1 скибка)', protein: 5, fat: 1, carbs: 20 },
+            { name: 'Банан', protein: 1, fat: 0, carbs: 25 },
+            { name: 'Свинина запечена', protein: 35, fat: 20, carbs: 0 },
+            { name: 'Коричневий рис', protein: 5, fat: 1, carbs: 45 },
+            { name: 'Паста з соусом', protein: 10, fat: 8, carbs: 60 },
+            { name: 'Сир', protein: 15, fat: 10, carbs: 2 },
+            { name: 'Омлет з сиром', protein: 15, fat: 12, carbs: 2 },
+            { name: 'Яловичина тушкована', protein: 40, fat: 25, carbs: 0 },
+            { name: 'Квасоля', protein: 10, fat: 1, carbs: 35 },
+            { name: 'Рис з овочами', protein: 7, fat: 3, carbs: 45 },
+            { name: 'Риба смажена', protein: 25, fat: 8, carbs: 0 },
+            { name: 'Гречка з вершковим маслом', protein: 10, fat: 10, carbs: 40 },
+            { name: 'Паста з куркою', protein: 20, fat: 5, carbs: 60 },
+            { name: 'Омлет з овочами', protein: 15, fat: 10, carbs: 5 },
+            { name: 'Свинина тушкована', protein: 35, fat: 20, carbs: 0 },
+            { name: 'Рис коричневий', protein: 5, fat: 1, carbs: 45 },
+            { name: 'Кукурудзяні пластівці', protein: 5, fat: 1, carbs: 40 },
+            { name: 'Молоко 1.5%', protein: 6, fat: 3, carbs: 8 },
+            { name: 'Індичка варена', protein: 35, fat: 3, carbs: 0 },
+            { name: 'Картопля пюре (маленька порція)', protein: 2, fat: 3, carbs: 30 },
+            { name: 'Овочі гриль', protein: 3, fat: 1, carbs: 10 },
+            { name: 'Білий хліб', protein: 6, fat: 1, carbs: 35 },
+            { name: 'Білий рис (маленька порція)', protein: 4, fat: 1, carbs: 30 },
+            { name: 'Свинина тушкована (помірно)', protein: 30, fat: 15, carbs: 0 },
+            { name: 'Макарони з білого борошна (маленька порція)', protein: 6, fat: 1, carbs: 35 },
+            { name: 'Білий хліб з медом (маленька порція)', protein: 4, fat: 1, carbs: 30 },
+            { name: 'Варені яйця', protein: 12, fat: 10, carbs: 1 },
+            { name: 'Молоко 2%', protein: 7, fat: 5, carbs: 10 },
+            { name: 'Картопля пюре', protein: 3, fat: 5, carbs: 40 },
+            { name: 'Яловичина смажена', protein: 40, fat: 25, carbs: 0 },
+            { name: 'Макарони з білого борошна', protein: 8, fat: 2, carbs: 55 },
+            { name: 'Білий хліб з медом', protein: 6, fat: 2, carbs: 50 },
+            { name: 'Білий хліб з джемом', protein: 6, fat: 2, carbs: 50 },
+            { name: 'Паста з соусом томатним', protein: 10, fat: 8, carbs: 60 },
+            { name: 'Картопля смажена', protein: 3, fat: 10, carbs: 35 },
+            { name: 'Мед', protein: 0, fat: 0, carbs: 20 }
+        ];
 
-                let totalProtein = 0, totalCarbs = 0, totalFat = 0, totalGI = 0, countGI = 0;
+        // Функція підбору меню по БЖУ
+        function pickMenuByBJU(bju) {
+            // Розподіл БЖУ по прийомах їжі
+            const parts = {
+                breakfast: { protein: Math.round(bju.protein * 0.3), fat: Math.round(bju.fat * 0.3), carbs: Math.round(bju.carbs * 0.3) },
+                lunch:     { protein: Math.round(bju.protein * 0.4), fat: Math.round(bju.fat * 0.4), carbs: Math.round(bju.carbs * 0.4) },
+                dinner:    { protein: Math.round(bju.protein * 0.3), fat: Math.round(bju.fat * 0.3), carbs: Math.round(bju.carbs * 0.3) }
+            };
 
-                for (const [mealName, foods] of Object.entries(meals)) {
-                    let mealLabel = mealNames[mealName] || mealName;
-                    dayHtml += `<h4>${mealLabel}</h4><ul>`;
+            // Групи продуктів для різних прийомів їжі
+            const groupFoods = (regex) => products.filter(p => regex.test(p.name));
+            const breakfastFoods = groupFoods(/вiвсянка|каша|яйце|омлет|молоко|сир|банан|яблуко|груша|чорниця|кефір|пластівці/i);
+            const lunchFoods     = groupFoods(/куряча|індичка|яловичина|свинина|риба|рис|гречка|овочі|салат|квасоля|горох|макарони|паста|буряк|капуста|томат|огірок/i);
+            const dinnerFoods    = groupFoods(/риба|індичка|яловичина|гречка|рис|овочі|салат|броколі|капуста|яйце|омлет|кефір|молоко/i);
 
-                    for (const food of foods) {
-                        dayHtml += `<li>${food.name} (ГІ: ${food.gi}, Білки: ${food.protein} г, Вуглеводи: ${food.carbs} г, Жири: ${food.fat} г)</li>`;
-                        totalProtein += food.protein;
-                        totalCarbs += food.carbs;
-                        totalFat += food.fat;
-                        if (food.gi) {
-                            totalGI += food.gi;
-                            countGI++;
-                        }
-                    }
-                    dayHtml += '</ul>';
+            // Підбір страв для одного прийому їжі
+            function pickMeal(target, foods, minCount, maxCount) {
+                let protein = 0, fat = 0, carbs = 0;
+                let meal = [];
+                let foodsCopy = [...foods];
+                const count = Math.floor(Math.random() * (maxCount - minCount + 1)) + minCount;
+
+                while ((protein < target.protein || fat < target.fat || carbs < target.carbs) && meal.length < count && foodsCopy.length > 0) {
+                    // Вибираємо продукт, який найбільше покриває дефіцит
+                    const deficits = [
+                        { type: 'protein', value: target.protein - protein },
+                        { type: 'fat', value: target.fat - fat },
+                        { type: 'carbs', value: target.carbs - carbs }
+                    ].sort((a, b) => b.value - a.value);
+                    const type = deficits[0].type;
+
+                    foodsCopy.sort((a, b) => b[type] - a[type]);
+                    const top = foodsCopy.slice(0, 3);
+                    const best = top[Math.floor(Math.random() * top.length)];
+                    meal.push(best);
+                    protein += best.protein;
+                    fat += best.fat;
+                    carbs += best.carbs;
+                    foodsCopy = foodsCopy.filter(f => f.name !== best.name);
                 }
-                const avgGI = (countGI > 0) ? (totalGI / countGI).toFixed(1) : '–';
-                dayHtml += `<p><strong>Загальні БЖУ:</strong> Білки ${totalProtein}г, Вуглеводи ${totalCarbs}г, Жири ${totalFat}г</p>`;
-                dayHtml += `<p><strong>Середній глікемічний індекс:</strong> ${avgGI}</p>`;
-
-                container.innerHTML += dayHtml;
+                // Якщо не вистачає страв, добираємо випадкові
+                while (meal.length < minCount && foods.length > 0) {
+                    const left = foods.filter(f => !meal.some(m => m.name === f.name));
+                    if (left.length === 0) break;
+                    meal.push(left[Math.floor(Math.random() * left.length)]);
+                }
+                return meal;
             }
+
+            // Підбір страв для кожного прийому їжі
+            const breakfast = pickMeal(parts.breakfast, breakfastFoods, 3);
+            const lunch     = pickMeal(parts.lunch, lunchFoods,  4);
+            const dinner    = pickMeal(parts.dinner, dinnerFoods,  3);
+
+            // Підрахунок сумарних БЖУ
+            const sumMeal = meal => meal.reduce((acc, p) => ({
+                protein: acc.protein + p.protein,
+                fat: acc.fat + p.fat,
+                carbs: acc.carbs + p.carbs
+            }), { protein: 0, fat: 0, carbs: 0 });
+
+            const total = [breakfast, lunch, dinner]
+                .map(sumMeal)
+                .reduce((acc, cur) => ({
+                    protein: acc.protein + cur.protein,
+                    fat: acc.fat + cur.fat,
+                    carbs: acc.carbs + cur.carbs
+                }), { protein: 0, fat: 0, carbs: 0 });
+
+            return { breakfast, lunch, dinner, total };
         }
 
 
 
+        // Додаємо кнопку для підбору меню по БЖУ
+        
+         document.getElementById('generate-menu').addEventListener('click', () => {
+            // Вивід bjuData на екран
+            const weeklyMenuDiv = document.getElementById('weekly-menu');
+            weeklyMenuDiv.innerHTML = `
+                <div style="margin-bottom:15px; background:#f3eaff; padding:10px 15px; border-radius:10px;">
+                    <b>Ваші БЖУ:</b><br>
+                    Калорії: ${bjuData.calories || '-'} ккал<br>
+                    Білки: ${bjuData.protein || '-'} г<br>
+                    Жири: ${bjuData.fat || '-'} г<br>
+                    Вуглеводи: ${bjuData.carbs || '-'} г
+                </div>
+            `;
+
+            if (!bjuData.protein || !bjuData.fat || !bjuData.carbs) {
+                weeklyMenuDiv.innerHTML += `<span style="color:red;">Спочатку розрахуйте свої БЖУ на головній сторінці!</span>`;
+                return;
+            }
+            const result = pickMenuByBJU(bjuData);
+            weeklyMenuDiv.innerHTML += `
+                <h3>Ваше меню на день (приклад):</h3>
+                <b>Сніданок:</b>
+                <ul>
+                    ${result.breakfast.map(p => `<li>${p.name} (100г) — <span style="color:#764ba2;">Б: ${p.protein}г, Ж: ${p.fat}г, В: ${p.carbs}г</span></li>`).join('')}
+                </ul>
+                <b>Обід:</b>
+                <ul>
+                    ${result.lunch.map(p => `<li>${p.name} (100г) — <span style="color:#764ba2;">Б: ${p.protein}г, Ж: ${p.fat}г, В: ${p.carbs}г</span></li>`).join('')}
+                </ul>
+                <b>Вечеря:</b>
+                <ul>
+                    ${result.dinner.map(p => `<li>${p.name} (100г) — <span style="color:#764ba2;">Б: ${p.protein}г, Ж: ${p.fat}г, В: ${p.carbs}г</span></li>`).join('')}
+                </ul>
+                <p><strong>Сумарно:</strong> Білки: ${result.total.protein} г, Жири: ${result.total.fat} г, Вуглеводи: ${result.total.carbs} г</p>
+                <p style="color:#555;">* Меню приблизне, для точного підбору змінюйте продукти або їх кількість вручну.</p>
+            `;
+        });
     </script>
 </body>
 
