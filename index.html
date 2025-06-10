@@ -220,16 +220,26 @@
       <option value="1.725">Висока активність</option>
     </select>
 
+    <label for="goal">Мета:</label>
+    <select id="goal" required>
+      <option value="maintain">Утримання ваги</option>
+      <option value="lose">Схуднення</option>
+      <option value="gain">Набір ваги</option>
+    </select>
+
     <button type="submit" class="submit-btn">Розрахувати БЖУ</button>
   </form>
   <div class="result" id="bju-result" style="display:none;"></div>
 </section>
 
+
 <!-- Меню + ГІ -->
 <section id="menu-section">
   <h2>Меню + Глікемічний індекс</h2>
-  <a href="meny.html" target="_blank" style="font-size:1.1rem;">Перейти до меню</a>
+  <a href="/meny.html" target="_blank" style="font-size:1.1rem;">Перейти до меню</a>
 </section>
+
+
 <!-- Інформація -->
 <section id="info-section">
   <h2>Інформація</h2>
@@ -311,8 +321,9 @@
     const height = parseFloat(document.getElementById('height').value);
     const gender = document.getElementById('gender').value;
     const activity = parseFloat(document.getElementById('activity').value);
+    const goal = document.getElementById('goal').value;
 
-    if (!age || !weight || !height || !gender || !activity ) return;
+    if (!age || !weight || !height || !gender || !activity || !goal) return;
 
     // BMR за формулою Міффліна-Сан Жеора
     let bmr = gender === 'male'
@@ -321,10 +332,24 @@
 
     let calories = bmr * activity;
 
-    calories = Math.round(calories);
+    // Коригування калорій залежно від мети
+    if (goal === 'lose') calories = Math.round(calories * 0.8);      // -20% для схуднення
+    else if (goal === 'gain') calories = Math.round(calories * 1.15); // +15% для набору
+    else calories = Math.round(calories);                             // утримання
 
-    const protein = Math.round(weight * 2); // 2г білка на кг
-    const fat = Math.round(weight * 1); // 1г жиру на кг
+    // БЖУ залежно від мети
+    let protein, fat;
+    if (goal === 'lose') {
+      protein = Math.round(weight * 2);   // 2г/кг для схуднення
+      fat = Math.round(weight * 0.8);     // 0.8г/кг для схуднення
+    } else if (goal === 'gain') {
+      protein = Math.round(weight * 1.6); // 1.6г/кг для набору
+      fat = Math.round(weight * 1.2);     // 1.2г/кг для набору
+    } else {
+      protein = Math.round(weight * 2);   // 2г/кг для утримання
+      fat = Math.round(weight * 1);       // 1г/кг для утримання
+    }
+
     const proteinKcal = protein * 4;
     const fatKcal = fat * 9;
     const carbKcal = calories - (proteinKcal + fatKcal);
@@ -336,10 +361,18 @@
       <strong>Калорії:</strong> ${calories} ккал/день<br>
       <strong>Білки:</strong> ${protein} г<br>
       <strong>Жири:</strong> ${fat} г<br>
-      <strong>Вуглеводи:</strong> ${carbs} 
+      <strong>Вуглеводи:</strong> ${carbs} г<br>
        <p style="color:#555; font-size:1.1rem;">* данні приблизні, для точних розрахунків передіть до меню:</p>
-        <a href="meny.html" target="_blank" style="font-size:1.1rem;">Перейти до меню</a>
+      <a href="/meny.html" target="_blank" style="font-size:1.1rem;">Перейти до меню</a>
     `;
+
+    // Зберігаємо дані у LocalStorage
+    localStorage.setItem('bjuData', JSON.stringify({
+      calories,
+      protein,
+      fat,
+      carbs
+    }));
   });
 </script>
 
